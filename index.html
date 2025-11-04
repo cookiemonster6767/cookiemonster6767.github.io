@@ -1,22 +1,522 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Cats and Facts - Home</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>This is my first website hosted on GitHub Pages.</p>
-    <p>I'm learning web development! 🚀</p>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-cat">
+      <div class="cat-emoji">😺</div>
+      <div class="loading-text">
+        Loading<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation menu -->
+  <div class="menu">
+    <a href="index.html" class="active">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="care.html">Cat Care</a>
+    <a href="games.html">Games</a>
+    <a href="facts.html">Fun Facts</a>
+  </div>
+
+  <h1>🐱 CATS AND FACTS 🐱</h1>
+
+  <!-- Secret Cat for Easter Egg #2 -->
+  <div class="secret-cat" id="secretCat" style="top: 15%; left: 5%;" onclick="collectSecretCat('home')">
+    🐈‍⬛
+  </div>
+
+  <div class="welcome">
+    <p>Welcome to the ultimate website for cat lovers! Discover amazing facts about our feline friends, learn how to care for them properly, and test your knowledge with our fun quiz!</p>
+  </div>
+
+  <!-- Adoption Section -->
+  <div class="adoption-section">
+    <h2>🏠 Looking to Adopt a Cat?</h2>
+    <p>Give a cat a loving home! Visit your local adoption centre to find your perfect furry companion.</p>
+    <a href="https://www.cats.org.uk/adopt-a-cat" target="_blank">Find Cats for Adoption</a>
+  </div>
+
+  <!-- Interactive Cat Drawings -->
+  <div class="interactive-cats">
+    <div class="cat-box" onclick="playCatSound('meow1')">
+      <div class="cat-drawing">🐈</div>
+      <p>Click me!</p>
+    </div>
+    <div class="cat-box" onclick="playCatSound('meow2')">
+      <div class="cat-drawing">😺</div>
+      <p>Click me!</p>
+    </div>
+    <div class="cat-box" onclick="playCatSound('meow3')">
+      <div class="cat-drawing">😸</div>
+      <p>Click me!</p>
+    </div>
+  </div>
+
+  <!-- Dark mode toggle button -->
+  <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <!-- Cat Counter Display -->
+  <div class="cat-counter" id="catCounter">
+    🐱 Secret Cats: <span id="catsFound">0</span>/5
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">
+    ⬆️
+  </button>
+
+  <!-- JavaScript: Interactive Cat Sounds -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function playCatSound(soundType) {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const oscillator2 = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      oscillator2.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.type = 'sawtooth';
+      oscillator2.type = 'sine';
+      
+      const now = audioContext.currentTime;
+      
+      if (soundType === 'meow1') {
+        oscillator.frequency.setValueAtTime(800, now);
+        oscillator.frequency.exponentialRampToValueAtTime(400, now + 0.15);
+        oscillator2.frequency.setValueAtTime(1600, now);
+        oscillator2.frequency.exponentialRampToValueAtTime(800, now + 0.15);
+        
+        gainNode.gain.setValueAtTime(0.2, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+        
+        oscillator.start(now);
+        oscillator.stop(now + 0.2);
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.2);
+      } else if (soundType === 'meow2') {
+        oscillator.frequency.setValueAtTime(600, now);
+        oscillator.frequency.linearRampToValueAtTime(900, now + 0.1);
+        oscillator.frequency.linearRampToValueAtTime(400, now + 0.3);
+        oscillator2.frequency.setValueAtTime(1200, now);
+        oscillator2.frequency.linearRampToValueAtTime(1800, now + 0.1);
+        oscillator2.frequency.linearRampToValueAtTime(800, now + 0.3);
+        
+        gainNode.gain.setValueAtTime(0.15, now);
+        gainNode.gain.linearRampToValueAtTime(0.25, now + 0.1);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+        
+        oscillator.start(now);
+        oscillator.stop(now + 0.35);
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.35);
+      } else if (soundType === 'meow3') {
+        oscillator.frequency.setValueAtTime(700, now);
+        oscillator.frequency.linearRampToValueAtTime(1000, now + 0.15);
+        oscillator.frequency.linearRampToValueAtTime(500, now + 0.4);
+        oscillator2.frequency.setValueAtTime(1400, now);
+        oscillator2.frequency.linearRampToValueAtTime(2000, now + 0.15);
+        oscillator2.frequency.linearRampToValueAtTime(1000, now + 0.4);
+        
+        gainNode.gain.setValueAtTime(0.2, now);
+        gainNode.gain.linearRampToValueAtTime(0.3, now + 0.15);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
+        
+        oscillator.start(now);
+        oscillator.stop(now + 0.45);
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.45);
+      }
+      
+      event.target.closest('.cat-box').style.backgroundColor = '#ffe4f5';
+      setTimeout(() => {
+        if (document.body.classList.contains('dark-mode')) {
+          event.target.closest('.cat-box').style.backgroundColor = '#3a3a3a';
+        } else {
+          event.target.closest('.cat-box').style.backgroundColor = '#fff';
+        }
+      }, 200);
+    }
+  </script>
+
+  <!-- JavaScript: Loading Screen -->
+  <script>
+    window.addEventListener('load', function() {
+      const loadingScreen = document.getElementById('loadingScreen');
+      
+      setTimeout(function() {
+        loadingScreen.classList.add('fade-out');
+        
+        setTimeout(function() {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+  </script>
+
+  <!-- JavaScript: Back to Top Button -->
+  <script>
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
+  <!-- JavaScript: Easter Egg #1 - Double-Click Party Mode -->
+  <script>
+    let partyModeActive = false;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const pageTitle = document.querySelector('h1');
+      
+      if (pageTitle) {
+        pageTitle.addEventListener('dblclick', function() {
+          if (!partyModeActive) {
+            activatePartyMode();
+          } else {
+            deactivatePartyMode();
+          }
+        });
+        
+        pageTitle.style.cursor = 'pointer';
+        pageTitle.title = 'Try double-clicking me! 😉';
+      }
+    });
+
+    function activatePartyMode() {
+      partyModeActive = true;
+      const title = document.querySelector('h1');
+      const body = document.body;
+      
+      title.classList.add('party-mode');
+      body.classList.add('party-body');
+      
+      createConfetti();
+      playPartySound();
+      
+      setTimeout(() => {
+        alert('🎉 PARTY MODE ACTIVATED! 🎉\nYou found the secret! Double-click again to stop.');
+      }, 100);
+    }
+
+    function deactivatePartyMode() {
+      partyModeActive = false;
+      const title = document.querySelector('h1');
+      const body = document.body;
+      
+      title.classList.remove('party-mode');
+      body.classList.remove('party-body');
+    }
+
+    function createConfetti() {
+      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+      
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.style.position = 'fixed';
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.top = '-10px';
+          confetti.style.width = '10px';
+          confetti.style.height = '10px';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animation = 'confetti-fall 3s linear forwards';
+          confetti.style.zIndex = '10000';
+          
+          document.body.appendChild(confetti);
+          
+          setTimeout(() => confetti.remove(), 3000);
+        }, i * 30);
+      }
+    }
+
+    function playPartySound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+      
+      notes.forEach((freq, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = freq;
+        oscillator.type = 'sine';
+        
+        const startTime = audioContext.currentTime + (index * 0.1);
+        gainNode.gain.setValueAtTime(0.3, startTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.15);
+        
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 0.15);
+      });
+    }
+  </script>
+
+  <!-- JavaScript: Easter Egg #2 - Secret Cat Collector -->
+  <script>
+    function initSecretCats() {
+      let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+      updateCatCounter();
+      
+      const secretCat = document.getElementById('secretCat');
+      if (secretCat) {
+        const catPage = secretCat.getAttribute('onclick').match(/'(.*)'/)[1];
+        if (collectedCats.includes(catPage)) {
+          secretCat.style.display = 'none';
+        }
+      }
+    }
+
+    function collectSecretCat(pageName) {
+      let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+      
+      if (collectedCats.includes(pageName)) {
+        return;
+      }
+      
+      collectedCats.push(pageName);
+      localStorage.setItem('collectedCats', JSON.stringify(collectedCats));
+      
+      const secretCat = document.getElementById('secretCat');
+      secretCat.classList.add('collected');
+      
+      playCatCollectSound();
+      
+      setTimeout(() => {
+        updateCatCounter();
+        secretCat.style.display = 'none';
+        
+        if (collectedCats.length === 5) {
+          setTimeout(() => {
+            alert('🎉 AMAZING! YOU FOUND ALL 5 SECRET CATS! 🎉\n\nYou are a TRUE Cat Detective! 🕵️‍♂️\n\nYou\'ve unlocked the title: Master Cat Finder! 🏆');
+          }, 500);
+        } else {
+          alert(`✨ Secret Cat Found! ✨\n\nYou've collected ${collectedCats.length}/5 cats!\n\nKeep exploring to find them all!`);
+        }
+      }, 600);
+    }
+
+    function updateCatCounter() {
+      let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+      const counter = document.getElementById('catCounter');
+      const catsFound = document.getElementById('catsFound');
+      
+      if (collectedCats.length > 0) {
+        counter.classList.add('show');
+        catsFound.textContent = collectedCats.length;
+      }
+    }
+
+    function playCatCollectSound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
+      
+      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.2);
+    }
+
+    document.addEventListener('DOMContentLoaded', initSecretCats);
+  </script>
+
+  <!-- JavaScript: Easter Egg #3 - Konami Code -->
+  <script>
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+    let secretModeActivated = false;
+
+    document.addEventListener('keydown', function(e) {
+      const key = e.key.toLowerCase();
+      
+      if (key === konamiCode[konamiIndex] || e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        
+        if (konamiIndex < konamiCode.length) {
+          playKonamiBeep(konamiIndex);
+        }
+        
+        if (konamiIndex === konamiCode.length) {
+          activateSecretMode();
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+
+    function playKonamiBeep(step) {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.value = 400 + (step * 50);
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.1);
+    }
+
+    function activateSecretMode() {
+      if (secretModeActivated) return;
+      secretModeActivated = true;
+      
+      const secretMode = document.createElement('div');
+      secretMode.className = 'secret-mode';
+      document.body.appendChild(secretMode);
+      
+      setTimeout(() => {
+        secretMode.classList.add('active');
+      }, 10);
+      
+      createFloatingCats();
+      playVictorySound();
+      
+      setTimeout(() => {
+        showAchievement();
+      }, 500);
+    }
+
+    function createFloatingCats() {
+      const catEmojis = ['😺', '😸', '😻', '😽', '😼', '🐱', '😹', '😿'];
+      
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const cat = document.createElement('div');
+          cat.className = 'floating-cat';
+          cat.textContent = catEmojis[Math.floor(Math.random() * catEmojis.length)];
+          cat.style.left = Math.random() * 90 + '%';
+          cat.style.top = Math.random() * 90 + '%';
+          cat.style.animationDelay = Math.random() * 2 + 's';
+          
+          document.body.appendChild(cat);
+          
+          setTimeout(() => cat.remove(), 10000);
+        }, i * 200);
+      }
+    }
+
+    function playVictorySound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      
+      const notes = [
+        { freq: 523.25, time: 0 },
+        { freq: 523.25, time: 0.15 },
+        { freq: 523.25, time: 0.3 },
+        { freq: 659.25, time: 0.5 },
+        { freq: 783.99, time: 0.7 }
+      ];
+      
+      notes.forEach(note => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = note.freq;
+        oscillator.type = 'square';
+        
+        const startTime = audioContext.currentTime + note.time;
+        gainNode.gain.setValueAtTime(0.2, startTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.3);
+        
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 0.3);
+      });
+    }
+
+    function showAchievement() {
+      const achievement = document.createElement('div');
+      achievement.className = 'secret-achievement';
+      achievement.innerHTML = `
+        <div class="achievement-title">🏆 ACHIEVEMENT UNLOCKED! 🏆</div>
+        <div class="achievement-text">
+          <strong>Secret Code Master!</strong><br><br>
+          You discovered the legendary Konami Code!<br>
+          ↑ ↑ ↓ ↓ ← → ← → B A<br><br>
+          🎮 You're a true gaming legend! 🎮
+        </div>
+        <button class="achievement-close" onclick="this.parentElement.remove()">Awesome!</button>
+        <button class="achievement-close turn-off" onclick="turnOffSecretMode()">Turn Off Effects</button>
+      `;
+      
+      document.body.appendChild(achievement);
+    }
+
+    function turnOffSecretMode() {
+      const achievement = document.querySelector('.secret-achievement');
+      if (achievement) {
+        achievement.remove();
+      }
+      
+      const secretMode = document.querySelector('.secret-mode');
+      if (secretMode) {
+        secretMode.classList.remove('active');
+        setTimeout(() => secretMode.remove(), 1000);
+      }
+      
+      const floatingCats = document.querySelectorAll('.floating-cat');
+      floatingCats.forEach(cat => cat.remove());
+      
+      secretModeActivated = false;
+      
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.2);
+      
+      gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.3);
+    }
+  </script>
+
 </body>
 </html>
