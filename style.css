@@ -1,0 +1,1209 @@
+/* ========================================
+   CATS AND FACTS - MAIN STYLESHEET
+   ======================================== */
+
+/* ========== LOADING ANIMATION ========== */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: lavender;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+}
+
+.loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-cat {
+  text-align: center;
+}
+
+.cat-emoji {
+  font-size: 5em;
+  animation: bounce 0.6s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #9370db;
+  font-weight: bold;
+}
+
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots span {
+  animation: blink 1.4s infinite;
+  animation-fill-mode: both;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* ========== NAVIGATION MENU ========== */
+.menu {
+  background-color: #9370db;
+  padding: 15px;
+  text-align: center;
+  margin: -20px -20px 20px -20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #7b68ee;
+}
+
+.menu a.active {
+  background-color: #6a5acd;
+}
+
+/* ========== BASE STYLES ========== */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: lavender;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4em;
+  color: #9370db;
+  margin: 30px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+h2 {
+  color: #9370db;
+}
+
+/* ========== HOME PAGE STYLES ========== */
+.welcome {
+  text-align: center;
+  font-size: 1.3em;
+  margin: 30px auto;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.adoption-section {
+  background-color: #fff;
+  border: 3px solid #9370db;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.adoption-section h2 {
+  color: #9370db;
+}
+
+.adoption-section a {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.adoption-section a:hover {
+  background-color: #ff1493;
+}
+
+.interactive-cats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.cat-box {
+  background-color: #fff;
+  border: 2px solid #9370db;
+  border-radius: 15px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cat-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(147, 112, 219, 0.4);
+}
+
+.cat-box:active {
+  transform: scale(0.95);
+}
+
+.cat-drawing {
+  font-size: 5em;
+  margin: 10px 0;
+}
+
+.cat-box p {
+  margin: 10px 0 0 0;
+  font-weight: bold;
+  color: #9370db;
+}
+
+/* ========== CAT CARE PAGE STYLES ========== */
+.intro {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 20px auto 40px auto;
+  max-width: 800px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 2px solid #9370db;
+  padding: 20px;
+  text-align: left;
+}
+
+th {
+  background-color: #9370db;
+  color: white;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+td img {
+  display: block;
+  margin: 10px auto;
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+td h3 {
+  color: #9370db;
+  margin-top: 0;
+}
+
+td ul {
+  line-height: 1.8;
+}
+
+.navigation-section {
+  text-align: center;
+  margin: 50px auto 20px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navigation-section h2 {
+  color: #9370db;
+  margin-bottom: 20px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.nav-btn {
+  padding: 15px 30px;
+  background-color: #9370db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-btn:hover {
+  background-color: #7b68ee;
+}
+
+.nav-btn.secondary {
+  background-color: #ff69b4;
+}
+
+.nav-btn.secondary:hover {
+  background-color: #ff1493;
+}
+
+/* ========== QUIZ PAGE STYLES ========== */
+.score-display {
+  text-align: center;
+  font-size: 1.5em;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 300px;
+  border: 3px solid #9370db;
+  font-weight: bold;
+}
+
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.question-card {
+  background-color: #fff;
+  border: 3px solid #9370db;
+  border-radius: 15px;
+  padding: 30px;
+  margin: 30px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.question-number {
+  color: #9370db;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.answer-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #e6e6fa;
+  border: 2px solid #9370db;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.answer-btn:hover {
+  background-color: #d8bfd8;
+  transform: translateX(5px);
+}
+
+.answer-btn.correct {
+  background-color: #90ee90;
+  border-color: #228b22;
+}
+
+.answer-btn.wrong {
+  background-color: #ffb6c1;
+  border-color: #dc143c;
+}
+
+.answer-btn:disabled {
+  cursor: not-allowed;
+}
+
+.explanation {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fffacd;
+  border-left: 5px solid #ffd700;
+  border-radius: 5px;
+  display: none;
+}
+
+.explanation.show {
+  display: block;
+}
+
+.explanation strong {
+  color: #9370db;
+}
+
+.results-container {
+  display: none;
+  text-align: center;
+  background-color: #fff;
+  border: 3px solid #9370db;
+  border-radius: 15px;
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.results-container.show {
+  display: block;
+}
+
+.results-emoji {
+  font-size: 5em;
+  margin: 20px 0;
+}
+
+.results-score {
+  font-size: 2.5em;
+  color: #9370db;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.results-message {
+  font-size: 1.3em;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.results-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.restart-btn {
+  padding: 15px 30px;
+  background-color: #9370db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.restart-btn:hover {
+  background-color: #7b68ee;
+}
+
+/* ========== FACTS PAGE STYLES ========== */
+.fact-counter {
+  text-align: center;
+  font-size: 1.3em;
+  margin: 20px 0;
+  color: #9370db;
+  font-weight: bold;
+}
+
+.fact-generator {
+  max-width: 700px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.generate-btn {
+  padding: 25px 50px;
+  font-size: 1.5em;
+  background: linear-gradient(135deg, #9370db 0%, #ff69b4 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 8px 15px rgba(147, 112, 219, 0.4);
+  transition: all 0.3s ease;
+  margin: 30px 0;
+}
+
+.generate-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(147, 112, 219, 0.6);
+}
+
+.generate-btn:active {
+  transform: translateY(-2px);
+}
+
+.fact-display {
+  background: white;
+  border: 4px solid #9370db;
+  border-radius: 20px;
+  padding: 40px;
+  margin: 30px auto;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.fact-display::before {
+  content: '❝';
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 4em;
+  color: #e6e6fa;
+  font-family: Georgia, serif;
+}
+
+.fact-emoji {
+  font-size: 4em;
+  margin-bottom: 20px;
+  animation: rotate 0.6s ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(0);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.fact-text {
+  font-size: 1.4em;
+  line-height: 1.8;
+  color: #333;
+  animation: fadeIn 0.8s ease-in;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fact-category {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-top: 20px;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.placeholder-text {
+  color: #9370db;
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.fun-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: white;
+  border: 3px solid #9370db;
+  border-radius: 15px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+  font-size: 2.5em;
+  color: #9370db;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 1em;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* ========== GAMES PAGE STYLES ========== */
+.game-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: white;
+  border: 3px solid #9370db;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.game-title {
+  font-size: 2em;
+  color: #9370db;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.game-description {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+/* Memory Game */
+.memory-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  background-color: #9370db;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.memory-card:hover {
+  transform: scale(1.05);
+}
+
+.memory-card.flipped {
+  background-color: #fff;
+  border: 3px solid #9370db;
+}
+
+.memory-card.matched {
+  background-color: #90ee90;
+  border: 3px solid #228b22;
+  cursor: default;
+}
+
+.memory-card .back {
+  display: block;
+}
+
+.memory-card .front {
+  display: none;
+}
+
+.memory-card.flipped .back {
+  display: none;
+}
+
+.memory-card.flipped .front {
+  display: block;
+}
+
+/* Breed Quiz */
+.breed-question {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.breed-options {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.breed-btn {
+  padding: 15px;
+  background-color: #e6e6fa;
+  border: 2px solid #9370db;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.breed-btn:hover {
+  background-color: #d8bfd8;
+  transform: translateX(5px);
+}
+
+.breed-btn.correct {
+  background-color: #90ee90;
+  border-color: #228b22;
+}
+
+.breed-btn.wrong {
+  background-color: #ffb6c1;
+  border-color: #dc143c;
+}
+
+.breed-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* Sound Game */
+.sound-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.sound-btn {
+  padding: 30px 20px;
+  background-color: #9370db;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.sound-btn:hover {
+  background-color: #7b68ee;
+  transform: scale(1.05);
+}
+
+.sound-btn:active {
+  transform: scale(0.95);
+}
+
+.game-btn {
+  padding: 15px 30px;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 20px auto;
+}
+
+.game-btn:hover {
+  background-color: #ff1493;
+}
+
+.win-message {
+  text-align: center;
+  font-size: 2em;
+  color: #228b22;
+  font-weight: bold;
+  margin: 20px 0;
+  display: none;
+}
+
+.win-message.show {
+  display: block;
+}
+
+/* ========== BUTTONS ========== */
+button {
+  padding: 10px 20px;
+  margin-top: 40px;
+  background-color: #c6bade;
+  color: deeppink;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* ========== BACK TO TOP BUTTON ========== */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #9370db;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: #7b68ee;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-top:active {
+  transform: translateY(-2px);
+}
+
+/* ========== EASTER EGG: KONAMI CODE ========== */
+.secret-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.secret-mode.active {
+  opacity: 0.3;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.floating-cat {
+  position: fixed;
+  font-size: 3em;
+  animation: float 3s ease-in-out infinite;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(-5deg);
+  }
+}
+
+.secret-achievement {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: white;
+  border: 5px solid #ffd700;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  z-index: 10001;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: achievementPop 0.5s ease-out forwards;
+}
+
+@keyframes achievementPop {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.achievement-title {
+  font-size: 2em;
+  color: #ffd700;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-text {
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.achievement-close {
+  background-color: #9370db;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 5px;
+  display: inline-block;
+}
+
+.achievement-close:hover {
+  background-color: #7b68ee;
+}
+
+.achievement-close.turn-off {
+  background-color: #ff69b4;
+}
+
+.achievement-close.turn-off:hover {
+  background-color: #ff1493;
+}
+
+/* ========== EASTER EGG: SECRET CAT COLLECTOR ========== */
+.secret-cat {
+  position: fixed;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s;
+  opacity: 0.3;
+  user-select: none;
+}
+
+.secret-cat:hover {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+.cat-counter {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  background-color: #9370db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 1001;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: none;
+  animation: slideInRight 0.5s ease-out;
+}
+
+.cat-counter.show {
+  display: block;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes collectCat {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.collected {
+  animation: collectCat 0.6s ease-out forwards;
+}
+
+/* ========== EASTER EGG: PARTY MODE ========== */
+@keyframes rainbow {
+  0% { color: #ff0000; }
+  14% { color: #ff7f00; }
+  28% { color: #ffff00; }
+  42% { color: #00ff00; }
+  57% { color: #0000ff; }
+  71% { color: #4b0082; }
+  85% { color: #9400d3; }
+  100% { color: #ff0000; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.party-mode {
+  animation: rainbow 2s linear infinite, spin 3s ease-in-out infinite !important;
+  cursor: pointer;
+}
+
+.party-body {
+  animation: shake 0.5s ease-in-out;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #f0f;
+  animation: confetti-fall 3s linear forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* ========== DARK MODE STYLES ========== */
+body.dark-mode .loading-screen {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode .loading-text {
+  color: #b19cd9;
+}
+
+body.dark-mode {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode h1 {
+  color: #b19cd9;
+}
+
+body.dark-mode .cat-box,
+body.dark-mode .adoption-section,
+body.dark-mode .score-display,
+body.dark-mode .question-card,
+body.dark-mode .results-container,
+body.dark-mode .game-container,
+body.dark-mode .navigation-section {
+  background-color: #3a3a3a;
+  border-color: #b19cd9;
+}
+
+body.dark-mode .cat-box p,
+body.dark-mode .adoption-section h2,
+body.dark-mode .navigation-section h2 {
+  color: #b19cd9;
+}
+
+body.dark-mode table {
+  background-color: #3a3a3a;
+}
+
+body.dark-mode th {
+  background-color: #6a5acd;
+}
+
+body.dark-mode td {
+  background-color: #3a3a3a;
+  border-color: #b19cd9;
+}
+
+body.dark-mode td h3 {
+  color: #b19cd9;
+}
+
+body.dark-mode .explanation {
+  background-color: #4a4a3a;
+  border-left-color: #ffd700;
+  color: #e0e0e0;
+}
+
+body.dark-mode .answer-btn,
+body.dark-mode .breed-btn {
+  background-color: #4a4a4a;
+  border-color: #b19cd9;
+  color: #e0e0e0;
+}
+
+body.dark-mode .answer-btn:hover,
+body.dark-mode .breed-btn:hover {
+  background-color: #5a5a5a;
+}
+
+body.dark-mode .breed-question {
+  background-color: #4a4a4a;
+}
+
+body.dark-mode .fact-counter {
+  color: #b19cd9;
+}
+
+body.dark-mode .fact-display {
+  background-color: #3a3a3a;
+  border-color: #b19cd9;
+}
+
+body.dark-mode .fact-text {
+  color: #e0e0e0;
+}
+
+body.dark-mode .placeholder-text {
+  color: #b19cd9;
+}
+
+body.dark-mode .stat-box {
+  background-color: #3a3a3a;
+  border-color: #b19cd9;
+}
+
+body.dark-mode .stat-number {
+  color: #b19cd9;
+}
+
+body.dark-mode .stat-label {
+  color: #bbb;
+}
+
+body.dark-mode .game-title {
+  color: #b19cd9;
+}
+
+body.dark-mode button {
+  background-color: #1e88e5;
+}
+
+body.dark-mode button:hover {
+  background-color: #1565c0;
+}
+
+body.dark-mode .back-to-top {
+  background-color: #b19cd9;
+}
+
+body.dark-mode .back-to-top:hover {
+  background-color: #9370db;
+}

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fun Cat Facts!</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-cat">
+      <div class="cat-emoji">😺</div>
+      <div class="loading-text">
+        Loading<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation menu -->
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="care.html">Cat Care</a>
+    <a href="games.html">Games</a>
+    <a href="facts.html" class="active">Fun Facts</a>
+  </div>
+
+  <h1>🎲 Amazing Cat Facts! 🎲</h1>
+
+  <!-- Secret Cat for Easter Egg #2 -->
+  <div class="secret-cat" id="secretCat" style="bottom: 40%; right: 12%;" onclick="collectSecretCat('facts')">
+    😽
+  </div>
+
+  <div class="intro">
+    <p>Did you know cats are full of surprises? Click the button below to discover fascinating facts about our feline friends!</p>
+  </div>
+
+  <div class="fact-counter">
+    Facts Discovered: <span id="factCount">0</span> / 25
+  </div>
+
+  <div class="fun-stats">
+    <div class="stat-box">
+      <div class="stat-number" id="totalClicks">0</div>
+      <div class="stat-label">Button Clicks</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number" id="uniqueFacts">0</div>
+      <div class="stat-label">Unique Facts</div>
+    </div>
+  </div>
+
+  <div class="fact-generator">
+    <button class="generate-btn" onclick="generateRandomFact()">
+      🎰 Show Me a Random Fact! 🎰
+    </button>
+
+    <div class="fact-display" id="factDisplay">
+      <p class="placeholder-text">Click the button above to discover an amazing cat fact!</p>
+    </div>
+  </div>
+
+  <!-- Reset Cat Collection Button -->
+  <button onclick="resetCatCollection()" style="background-color: #ff69b4; color: white; padding: 15px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1em; font-weight: bold; margin: 20px auto; display: block; transition: background-color 0.3s;">
+    🔄 Reset Cat Collection
+  </button>
+
+  <!-- Dark mode toggle button -->
+  <button class="toggle-mode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <!-- Cat Counter Display -->
+  <div class="cat-counter" id="catCounter">
+    🐱 Secret Cats: <span id="catsFound">0</span>/5
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">
+    ⬆️
+  </button>
+
+  <!-- JavaScript: Fun Facts Generator -->
+  <script>
+    const catFacts = [
+      { emoji: '😴', text: 'Cats sleep for around 13-16 hours per day! That\'s about 70% of their lives spent snoozing.', category: 'Behavior' },
+      { emoji: '🐾', text: 'A cat has 230 bones in its body - that\'s 24 more bones than humans have!', category: 'Anatomy' },
+      { emoji: '🎵', text: 'Cats can make over 100 different sounds, while dogs can only make about 10!', category: 'Communication' },
+      { emoji: '🏃', text: 'A domestic cat can sprint at speeds of up to 30 mph - that\'s as fast as Usain Bolt!', category: 'Athletic' },
+      { emoji: '👃', text: 'A cat\'s nose print is unique, just like a human\'s fingerprint!', category: 'Unique Traits' },
+      { emoji: '👁️', text: 'Cats can see in just one-sixth of the light that humans need. Their night vision is incredible!', category: 'Senses' },
+      { emoji: '👂', text: 'Cats have 32 muscles in each ear, allowing them to rotate their ears 180 degrees!', category: 'Anatomy' },
+      { emoji: '💓', text: 'A cat\'s heart beats nearly twice as fast as a human heart - about 110-140 beats per minute!', category: 'Health' },
+      { emoji: '🦘', text: 'Cats can jump up to six times their own height in a single bound!', category: 'Athletic' },
+      { emoji: '🌍', text: 'There are over 500 million domestic cats in the world!', category: 'Population' },
+      { emoji: '🧬', text: 'Cats share 95.6% of their genetic makeup with tigers - they\'re basically mini big cats!', category: 'Science' },
+      { emoji: '🧠', text: 'A cat\'s brain is 90% similar to a human brain. They even have the same regions responsible for emotion!', category: 'Science' },
+      { emoji: '🎂', text: 'The oldest cat ever lived to 38 years old! That\'s like 170 in human years.', category: 'Records' },
+      { emoji: '🔇', text: 'Cats are extremely sensitive to vibrations and can detect earthquakes 10-15 minutes before humans!', category: 'Senses' },
+      { emoji: '💧', text: 'Cats don\'t have a strong thirst drive and can go a long time without drinking water - they evolved in deserts!', category: 'Evolution' },
+      { emoji: '🐭', text: 'Cats bring you dead animals because they think you\'re a terrible hunter and need feeding!', category: 'Behavior' },
+      { emoji: '🗣️', text: 'Adult cats only meow to communicate with humans - they rarely meow at other cats!', category: 'Communication' },
+      { emoji: '🏠', text: 'Cats spend about 30-50% of their waking hours grooming themselves!', category: 'Hygiene' },
+      { emoji: '😸', text: 'When a cat purrs, it can be healing! The frequency of purrs (25-150 Hz) promotes bone and tissue healing.', category: 'Health' },
+      { emoji: '🌙', text: 'Cats are crepuscular - they\'re most active during dawn and dusk, not nighttime!', category: 'Behavior' },
+      { emoji: '👥', text: 'Cats have a third eyelid called a \'haw\' that you can sometimes see when they\'re sleepy or unwell.', category: 'Anatomy' },
+      { emoji: '🎨', text: 'All kittens are born with blue eyes! Their true eye color develops at around 7-12 weeks old.', category: 'Development' },
+      { emoji: '🧊', text: 'Cats can\'t taste sweetness! They lack the taste receptors for sweet flavors.', category: 'Senses' },
+      { emoji: '👨‍🚀', text: 'In 1963, France sent the first cat into space. Her name was Félicette!', category: 'History' },
+      { emoji: '🏰', text: 'Ancient Egyptians worshipped cats and even mummified them! Killing a cat was punishable by death.', category: 'History' }
+    ];
+
+    let discoveredFacts = new Set();
+    let totalClicks = 0;
+    let lastFactIndex = -1;
+
+    function generateRandomFact() {
+      totalClicks++;
+      document.getElementById('totalClicks').textContent = totalClicks;
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * catFacts.length);
+      } while (randomIndex === lastFactIndex && catFacts.length > 1);
+      
+      lastFactIndex = randomIndex;
+      const fact = catFacts[randomIndex];
+      
+      discoveredFacts.add(randomIndex);
+      document.getElementById('factCount').textContent = discoveredFacts.size;
+      document.getElementById('uniqueFacts').textContent = discoveredFacts.size;
+
+      const display = document.getElementById('factDisplay');
+      display.innerHTML = `
+        <div class="fact-emoji">${fact.emoji}</div>
+        <p class="fact-text">${fact.text}</p>
+        <span class="fact-category">${fact.category}</span>
+      `;
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    window.addEventListener('load', function() {
+      const loadingScreen = document.getElementById('loadingScreen');
+      setTimeout(function() {
+        loadingScreen.classList.add('fade-out');
+        setTimeout(function() {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+  </script>
+
+  <!-- JavaScript: Easter Egg #1 - Double-Click Party Mode -->
+  <script>
+    let partyModeActive = false;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const pageTitle = document.querySelector('h1');
+      
+      if (pageTitle) {
+        pageTitle.addEventListener('dblclick', function() {
+          if (!partyModeActive) {
+            activatePartyMode();
+          } else {
+            deactivatePartyMode();
+          }
+        });
+        
+        pageTitle.style.cursor = 'pointer';
+        pageTitle.title = 'Try double-clicking me! 😉';
+      }
+    });
+
+    function activatePartyMode() {
+      partyModeActive = true;
+      const title = document.querySelector('h1');
+      const body = document.body;
+      
+      title.classList.add('party-mode');
+      body.classList.add('party-body');
+      
+      createConfetti();
+      playPartySound();
+      
+      setTimeout(() => {
+        alert('🎉 PARTY MODE ACTIVATED! 🎉\nYou found the secret! Double-click again to stop.');
+      }, 100);
+    }
+
+    function deactivatePartyMode() {
+      partyModeActive = false;
+      const title = document.querySelector('h1');
+      const body = document.body;
+      
+      title.classList.remove('party-mode');
+      body.classList.remove('party-body');
+    }
+
+    function createConfetti() {
+      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+      
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.style.position = 'fixed';
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.top = '-10px';
+          confetti.style.width = '10px';
+          confetti.style.height = '10px';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animation = 'confetti-fall 3s linear forwards';
+          confetti.style.zIndex = '10000';
+          
+          document.body.appendChild(confetti);
+          
+          setTimeout(() => confetti.remove(), 3000);
+        }, i * 30);
+      }
+    }
+
+    function playPartySound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+      
+      notes.forEach((freq, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = freq;
+        oscillator.type = 'sine';
+        
+        const startTime = audioContext.currentTime + (index * 0.1);
+        gainNode.gain.setValueAtTime(0.3, startTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.15);
+        
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 0.15);
+      });
+    }
+  </script>
+
+  <!-- JavaScript: Easter Egg #2 - Secret Cat Collector -->
+  <script>
+    function initSecretCats() {
+      let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+      updateCatCounter();
+      
+      const secretCat = document.getElementById('secretCat');
+      if (secretCat) {
+        const catPage = secretCat.getAttribute('onclick').match(/'(.*)'/)[1];
+        if (collectedCats.includes(catPage)) {
+          secretCat.style.display = 'none';
+        }
+      }
+    }
+
+    function collectSecretCat(pageName) {
+      let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+      
+      if (collectedCats.includes(pageName)) {
+        return;
+      }
+      
+      collectedCats.push(pageName);
+      localStorage.setItem('collectedCats', JSON.stringify(collectedCats));
+      
+      const secretCat = document.getElementById('secretCat');
+      secretCat.classList.add('collected');
+      
+      playCatCollectSound();
+      
+      setTimeout(() => {
+        updateCatCounter();
+        secretCat.style.display = 'none';
+        
+        if (collectedCats.length === 5) {
+          setTimeout(() => {
+            alert('🎉 AMAZING! YOU FOUND ALL 5 SECRET CATS! 🎉\n\nYou are a TRUE Cat Detective! 🕵️‍♂️\n\nYou\'ve unlocked the title: Master Cat Finder! 🏆');
+          }, 500);
+        } else {
+          alert(`✨ Secret Cat Found! ✨\n\nYou've collected ${collectedCats.length}/5 cats!\n\nKeep exploring to find them all!`);
+        }
+      }, 600);
+    }
+
+    function updateCatCounter() {
+      let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+      const counter = document.getElementById('catCounter');
+      const catsFound = document.getElementById('catsFound');
+      
+      if (collectedCats.length > 0) {
+        counter.classList.add('show');
+        catsFound.textContent = collectedCats.length;
+      }
+    }
+
+    function playCatCollectSound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
+      
+      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.2);
+    }
+
+    document.addEventListener('DOMContentLoaded', initSecretCats);
+  </script>
+
+  <!-- JavaScript: Reset Cat Collection -->
+  <script>
+    function resetCatCollection() {
+      if (confirm('🐱 Are you sure you want to reset your cat collection?\n\nAll progress will be lost and you\'ll need to find all 5 cats again!')) {
+        localStorage.removeItem('collectedCats');
+        alert('✨ Cat collection reset! 🎉\n\nAll 5 secret cats are now hidden again throughout the website.\n\nHappy hunting, Cat Detective! 🕵️‍♂️');
+        location.reload();
+      }
+    }
+  </script>
+
+  <!-- JavaScript: Easter Egg #3 - Konami Code -->
+  <script>
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+    let secretModeActivated = false;
+
+    document.addEventListener('keydown', function(e) {
+      const key = e.key.toLowerCase();
+      
+      if (key === konamiCode[konamiIndex] || e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        
+        if (konamiIndex < konamiCode.length) {
+          playKonamiBeep(konamiIndex);
+        }
+        
+        if (konamiIndex === konamiCode.length) {
+          activateSecretMode();
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+
+    function playKonamiBeep(step) {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.value = 400 + (step * 50);
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.1);
+    }
+
+    function activateSecretMode() {
+      if (secretModeActivated) return;
+      secretModeActivated = true;
+      
+      const secretMode = document.createElement('div');
+      secretMode.className = 'secret-mode';
+      document.body.appendChild(secretMode);
+      
+      setTimeout(() => {
+        secretMode.classList.add('active');
+      }, 10);
+      
+      createFloatingCats();
+      playVictorySound();
+      
+      setTimeout(() => {
+        showAchievement();
+      }, 500);
+    }
+
+    function createFloatingCats() {
+      const catEmojis = ['😺', '😸', '😻', '😽', '😼', '🐱', '😹', '😿'];
+      
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const cat = document.createElement('div');
+          cat.className = 'floating-cat';
+          cat.textContent = catEmojis[Math.floor(Math.random() * catEmojis.length)];
+          cat.style.left = Math.random() * 90 + '%';
+          cat.style.top = Math.random() * 90 + '%';
+          cat.style.animationDelay = Math.random() * 2 + 's';
+          
+          document.body.appendChild(cat);
+          
+          setTimeout(() => cat.remove(), 10000);
+        }, i * 200);
+      }
+    }
+
+    function playVictorySound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      
+      const notes = [
+        { freq: 523.25, time: 0 },
+        { freq: 523.25, time: 0.15 },
+        { freq: 523.25, time: 0.3 },
+        { freq: 659.25, time: 0.5 },
+        { freq: 783.99, time: 0.7 }
+      ];
+      
+      notes.forEach(note => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = note.freq;
+        oscillator.type = 'square';
+        
+        const startTime = audioContext.currentTime + note.time;
+        gainNode.gain.setValueAtTime(0.2, startTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.3);
+        
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 0.3);
+      });
+    }
+
+    function showAchievement() {
+      const achievement = document.createElement('div');
+      achievement.className = 'secret-achievement';
+      achievement.innerHTML = `
+        <div class="achievement-title">🏆 ACHIEVEMENT UNLOCKED! 🏆</div>
+        <div class="achievement-text">
+          <strong>Secret Code Master!</strong><br><br>
+          You discovered the legendary Konami Code!<br>
+          ↑ ↑ ↓ ↓ ← → ← → B A<br><br>
+          🎮 You're a true gaming legend! 🎮
+        </div>
+        <button class="achievement-close" onclick="this.parentElement.remove()">Awesome!</button>
+        <button class="achievement-close turn-off" onclick="turnOffSecretMode()">Turn Off Effects</button>
+      `;
+      
+      document.body.appendChild(achievement);
+    }
+
+    function turnOffSecretMode() {
+      const achievement = document.querySelector('.secret-achievement');
+      if (achievement) {
+        achievement.remove();
+      }
+      
+      const secretMode = document.querySelector('.secret-mode');
+      if (secretMode) {
+        secretMode.classList.remove('active');
+        setTimeout(() => secretMode.remove(), 1000);
+      }
+      
+      const floatingCats = document.querySelectorAll('.floating-cat');
+      floatingCats.forEach(cat => cat.remove());
+      
+      secretModeActivated = false;
+      
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.2);
+      
+      gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.3);
+    }
+  </script>
+
+  <!-- JavaScript: Back to Top Button -->
+  <script>
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
+</body>
+</html>

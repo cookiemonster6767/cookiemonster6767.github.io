@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cat Care Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-cat">
+    <div class="cat-emoji">😺</div>
+    <div class="loading-text">
+      Loading<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+    </div>
+  </div>
+</div>
+
+  <!-- Navigation menu -->
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="care.html" class="active">Cat Care</a>
+	<a href="games.html">Games</a>
+	  <a href="facts.html">Fun Facts</a>
+  </div>
+
+  <h1>🐾 Cat Care Guide 🐾</h1>
+<div class="secret-cat" id="secretCat" style="bottom: 30%; left: 8%;" onclick="collectSecretCat('care')">
+  😸
+</div>
+
+  <div class="intro">
+    <p>Everything you need to know about caring for your feline friend! From essential supplies to feeding schedules, we've got you covered.</p>
+  </div>
+
+  <!-- Cat Care Table -->
+  <table>
+    <tr>
+      <th colspan="2">Essential Cat Care Information</th>
+    </tr>
+    
+    <tr>
+      <td>
+        <h3>🛒 What You'll Need to Buy</h3>
+        <p>Before bringing your cat home, make sure you have these essential supplies:</p>
+        <ul>
+          <li><strong>Food & Water Bowls:</strong> Stainless steel or ceramic bowls work best</li>
+          <li><strong>Cat Food:</strong> High-quality cat food appropriate for their age</li>
+          <li><strong>Litter Box & Litter:</strong> One per cat, plus one extra</li>
+          <li><strong>Cat Bed:</strong> A cosy, warm place to sleep</li>
+          <li><strong>Scratching Post:</strong> Essential to protect your furniture!</li>
+          <li><strong>Toys:</strong> Balls, mice, feather wands for playtime</li>
+          <li><strong>Grooming Brush:</strong> For keeping their coat healthy</li>
+          <li><strong>Carrier:</strong> For vet visits and travel</li>
+          <li><strong>Collar & ID Tag:</strong> With your contact information</li>
+        </ul>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p style="font-size: 8em; margin: 0;">🛍️</p>
+        <p style="font-size: 3em; margin: 10px 0;">🍽️🛏️🧶</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <h3>❤️ How to Treat Your New Cat</h3>
+        <p><strong>The First Few Days:</strong></p>
+        <ul>
+          <li><strong>Be Patient:</strong> Your cat will be nervous in their new home - this is completely normal!</li>
+          <li><strong>Quiet Space:</strong> Give them a quiet room to settle in first with their litter box, food, and bed</li>
+          <li><strong>Let Them Explore:</strong> Don't force interaction - let them come to you when ready</li>
+          <li><strong>Speak Softly:</strong> Use a calm, gentle voice around them</li>
+          <li><strong>Routine:</strong> Feed them at the same times each day to help them feel secure</li>
+          <li><strong>Play Time:</strong> Use toys to build trust and bond with them</li>
+          <li><strong>Hiding is Normal:</strong> They may hide for a few days - don't worry!</li>
+        </ul>
+        <p><em>Remember: It can take 2-3 weeks for a cat to fully settle into a new home.</em></p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p style="font-size: 10em; margin: 0;">😺</p>
+        <p><em>A nervous kitten settling in</em></p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <h3>🍽️ Food Portions by Cat Age</h3>
+        <p><strong>Kittens (2-12 months):</strong></p>
+        <ul>
+          <li>3-4 small meals per day</li>
+          <li>Approximately 200-250 calories per day</li>
+          <li>Use kitten-specific food (higher protein & calories)</li>
+        </ul>
+        
+        <p><strong>Adult Cats (1-7 years):</strong></p>
+        <ul>
+          <li>2 meals per day</li>
+          <li>Approximately 200-300 calories per day (depending on size)</li>
+          <li>Average 4kg cat needs about 180-200g wet food daily</li>
+        </ul>
+        
+        <p><strong>Senior Cats (7+ years):</strong></p>
+        <ul>
+          <li>2-3 smaller meals per day</li>
+          <li>Approximately 180-200 calories per day</li>
+          <li>May need senior-specific food with joint support</li>
+        </ul>
+        
+        <p><em>Note: Always provide fresh water and adjust portions based on your cat's activity level and weight. Consult your vet for specific recommendations!</em></p>
+      </td>
+      <td style="text-align: center; vertical-align: middle;">
+        <p style="font-size: 8em; margin: 0;">🥫</p>
+        <p style="font-size: 3em; margin: 10px 0;">🐟🥩🍗</p>
+        <p><em>Yummy cat food!</em></p>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Navigation Section -->
+  <div class="navigation-section">
+    <h2>Ready to Test Your Knowledge? 🎓</h2>
+    <p>Now that you've learned about cat care, why not take our quiz to see how much you remember?</p>
+    <div class="nav-buttons">
+      <a href="quiz.html" class="nav-btn">🎮 Take the Quiz</a>
+      <a href="index.html" class="nav-btn secondary">🏠 Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Dark mode toggle button at bottom -->
+  <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+  <script>
+// Hide loading screen after page loads
+window.addEventListener('load', function() {
+  const loadingScreen = document.getElementById('loadingScreen');
+  
+  // Wait 0.8 seconds then fade out
+  setTimeout(function() {
+    loadingScreen.classList.add('fade-out');
+    
+    // Remove from DOM after fade animation completes
+    setTimeout(function() {
+      loadingScreen.style.display = 'none';
+    }, 500);
+  }, 800);
+});
+</script>
+ <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">
+    ⬆️
+  </button>
+
+  <!-- Back to Top JavaScript -->
+  <script>
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+  <script>
+// Easter Egg #1: Double-Click Title for Party Mode!
+let partyModeActive = false;
+
+document.addEventListener('DOMContentLoaded', function() {
+  const pageTitle = document.querySelector('h1');
+  
+  if (pageTitle) {
+    pageTitle.addEventListener('dblclick', function() {
+      if (!partyModeActive) {
+        activatePartyMode();
+      } else {
+        deactivatePartyMode();
+      }
+    });
+    
+    // Add a hint cursor
+    pageTitle.style.cursor = 'pointer';
+    pageTitle.title = 'Try double-clicking me! 😉';
+  }
+});
+
+function activatePartyMode() {
+  partyModeActive = true;
+  const title = document.querySelector('h1');
+  const body = document.body;
+  
+  // Add party mode class
+  title.classList.add('party-mode');
+  body.classList.add('party-body');
+  
+  // Create confetti
+  createConfetti();
+  
+  // Play a victory sound
+  playPartySound();
+  
+  // Show message
+  setTimeout(() => {
+    alert('🎉 PARTY MODE ACTIVATED! 🎉\nYou found the secret! Double-click again to stop.');
+  }, 100);
+}
+
+function deactivatePartyMode() {
+  partyModeActive = false;
+  const title = document.querySelector('h1');
+  const body = document.body;
+  
+  title.classList.remove('party-mode');
+  body.classList.remove('party-body');
+}
+
+function createConfetti() {
+  const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+  
+  for (let i = 0; i < 50; i++) {
+    setTimeout(() => {
+      const confetti = document.createElement('div');
+      confetti.style.position = 'fixed';
+      confetti.style.left = Math.random() * 100 + '%';
+      confetti.style.top = '-10px';
+      confetti.style.width = '10px';
+      confetti.style.height = '10px';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.animation = 'confetti-fall 3s linear forwards';
+      confetti.style.zIndex = '10000';
+      
+      document.body.appendChild(confetti);
+      
+      setTimeout(() => confetti.remove(), 3000);
+    }, i * 30);
+  }
+}
+
+function playPartySound() {
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Play a celebratory ascending scale
+  const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+  
+  notes.forEach((freq, index) => {
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = freq;
+    oscillator.type = 'sine';
+    
+    const startTime = audioContext.currentTime + (index * 0.1);
+    gainNode.gain.setValueAtTime(0.3, startTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.15);
+    
+    oscillator.start(startTime);
+    oscillator.stop(startTime + 0.15);
+  });
+}
+</script>
+<div class="cat-counter" id="catCounter">
+  🐱 Secret Cats: <span id="catsFound">0</span>/5
+</div>
+<script>
+// Easter Egg #2: Secret Cat Collector
+function initSecretCats() {
+  // Get collected cats from localStorage
+  let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+  
+  // Update counter display
+  updateCatCounter();
+  
+  // Check if cat on this page was already collected
+  const secretCat = document.getElementById('secretCat');
+  if (secretCat) {
+    const catPage = secretCat.getAttribute('onclick').match(/'(.*)'/)[1];
+    if (collectedCats.includes(catPage)) {
+      secretCat.style.display = 'none';
+    }
+  }
+}
+
+function collectSecretCat(pageName) {
+  // Get current collection
+  let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+  
+  // Check if already collected
+  if (collectedCats.includes(pageName)) {
+    return;
+  }
+  
+  // Add to collection
+  collectedCats.push(pageName);
+  localStorage.setItem('collectedCats', JSON.stringify(collectedCats));
+  
+  // Animate the cat
+  const secretCat = document.getElementById('secretCat');
+  secretCat.classList.add('collected');
+  
+  // Play collection sound
+  playCatCollectSound();
+  
+  // Update counter
+  setTimeout(() => {
+    updateCatCounter();
+    secretCat.style.display = 'none';
+    
+    // Check if all cats collected
+    if (collectedCats.length === 5) {
+      setTimeout(() => {
+        alert('🎉 AMAZING! YOU FOUND ALL 5 SECRET CATS! 🎉\n\nYou are a TRUE Cat Detective! 🕵️‍♂️\n\nYou\'ve unlocked the title: Master Cat Finder! 🏆');
+      }, 500);
+    } else {
+      alert(`✨ Secret Cat Found! ✨\n\nYou've collected ${collectedCats.length}/5 cats!\n\nKeep exploring to find them all!`);
+    }
+  }, 600);
+}
+
+function updateCatCounter() {
+  let collectedCats = JSON.parse(localStorage.getItem('collectedCats') || '[]');
+  const counter = document.getElementById('catCounter');
+  const catsFound = document.getElementById('catsFound');
+  
+  if (collectedCats.length > 0) {
+    counter.classList.add('show');
+    catsFound.textContent = collectedCats.length;
+  }
+}
+
+function playCatCollectSound() {
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+  oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
+  
+  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+  
+  oscillator.start(audioContext.currentTime);
+  oscillator.stop(audioContext.currentTime + 0.2);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initSecretCats);
+</script>
+<script>
+// Easter Egg #3: Konami Code (↑ ↑ ↓ ↓ ← → ← → B A)
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+let secretModeActivated = false;
+
+document.addEventListener('keydown', function(e) {
+  // Check if the key matches the next key in the sequence
+  const key = e.key.toLowerCase();
+  
+  if (key === konamiCode[konamiIndex] || e.key === konamiCode[konamiIndex]) {
+    konamiIndex++;
+    
+    // Play a little beep for feedback
+    if (konamiIndex < konamiCode.length) {
+      playKonamiBeep(konamiIndex);
+    }
+    
+    // Check if the full code was entered
+    if (konamiIndex === konamiCode.length) {
+      activateSecretMode();
+      konamiIndex = 0;
+    }
+  } else {
+    // Reset if wrong key
+    konamiIndex = 0;
+  }
+});
+
+function playKonamiBeep(step) {
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.frequency.value = 400 + (step * 50);
+  gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+  
+  oscillator.start(audioContext.currentTime);
+  oscillator.stop(audioContext.currentTime + 0.1);
+}
+
+function activateSecretMode() {
+  if (secretModeActivated) return;
+  secretModeActivated = true;
+  
+  // Create background overlay
+  const secretMode = document.createElement('div');
+  secretMode.className = 'secret-mode';
+  document.body.appendChild(secretMode);
+  
+  setTimeout(() => {
+    secretMode.classList.add('active');
+  }, 10);
+  
+  // Create floating cats
+  createFloatingCats();
+  
+  // Play victory sound
+  playVictorySound();
+  
+  // Show achievement
+  setTimeout(() => {
+    showAchievement();
+  }, 500);
+}
+
+function createFloatingCats() {
+  const catEmojis = ['😺', '😸', '😻', '😽', '😼', '🐱', '😹', '😿'];
+  
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => {
+      const cat = document.createElement('div');
+      cat.className = 'floating-cat';
+      cat.textContent = catEmojis[Math.floor(Math.random() * catEmojis.length)];
+      cat.style.left = Math.random() * 90 + '%';
+      cat.style.top = Math.random() * 90 + '%';
+      cat.style.animationDelay = Math.random() * 2 + 's';
+      
+      document.body.appendChild(cat);
+      
+      // Remove after 10 seconds
+      setTimeout(() => cat.remove(), 10000);
+    }, i * 200);
+  }
+}
+
+function playVictorySound() {
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Play a triumphant fanfare
+  const notes = [
+    { freq: 523.25, time: 0 },
+    { freq: 523.25, time: 0.15 },
+    { freq: 523.25, time: 0.3 },
+    { freq: 659.25, time: 0.5 },
+    { freq: 783.99, time: 0.7 }
+  ];
+  
+  notes.forEach(note => {
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = note.freq;
+    oscillator.type = 'square';
+    
+    const startTime = audioContext.currentTime + note.time;
+    gainNode.gain.setValueAtTime(0.2, startTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.3);
+    
+    oscillator.start(startTime);
+    oscillator.stop(startTime + 0.3);
+  });
+}
+
+function showAchievement() {
+  const achievement = document.createElement('div');
+  achievement.className = 'secret-achievement';
+  achievement.innerHTML = `
+    <div class="achievement-title">🏆 ACHIEVEMENT UNLOCKED! 🏆</div>
+    <div class="achievement-text">
+      <strong>Secret Code Master!</strong><br><br>
+      You discovered the legendary Konami Code!<br>
+      ↑ ↑ ↓ ↓ ← → ← → B A<br><br>
+      🎮 You're a true gaming legend! 🎮
+    </div>
+    <button class="achievement-close" onclick="this.parentElement.remove()">Awesome!</button>
+    <button class="achievement-close turn-off" onclick="turnOffSecretMode()">Turn Off Effects</button>
+  `;
+  
+  document.body.appendChild(achievement);
+}
+
+function turnOffSecretMode() {
+  // Remove the achievement popup
+  const achievement = document.querySelector('.secret-achievement');
+  if (achievement) {
+    achievement.remove();
+  }
+  
+  // Remove background overlay
+  const secretMode = document.querySelector('.secret-mode');
+  if (secretMode) {
+    secretMode.classList.remove('active');
+    setTimeout(() => secretMode.remove(), 1000);
+  }
+  
+  // Remove all floating cats
+  const floatingCats = document.querySelectorAll('.floating-cat');
+  floatingCats.forEach(cat => cat.remove());
+  
+  // Reset the flag so code can be used again
+  secretModeActivated = false;
+  
+  // Play a little "off" sound
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+  oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.2);
+  
+  gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+  
+  oscillator.start(audioContext.currentTime);
+  oscillator.stop(audioContext.currentTime + 0.3);
+}
+</script>  
+</body>
+</html>
